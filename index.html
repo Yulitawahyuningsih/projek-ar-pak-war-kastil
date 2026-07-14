@@ -24,18 +24,22 @@
 <body style="margin: 0; overflow: hidden;">
 
   <a-scene embedded
-    arjs="sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">
+    arjs="sourceType: webcam; sourceWidth: 1280; sourceHeight: 960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;"
+    vr-mode-ui="enabled: false">
     <a-assets>
       <audio id="musik-bg" src="kastil.mp3" preload="auto"></audio>
     </a-assets>
 
-    <a-marker preset="hiro" id="marker-utama">
-      <a-entity
-        id="model-kastil"
-        gltf-model="projek ar kastil  fantasi2.glb"
-        scale="0.03 0.03 0.03"
-        position="0 0 0"
-        animation-mixer="clip: *; loop: repeat">
+    <a-marker preset="hiro" id="marker-utama" smooth="true" smoothCount="25" smoothTolerance="0.005" smoothThreshold="8">
+      <!-- Parent entity untuk rotasi sudut pandang, biar model dilihat dari samping -->
+      <a-entity rotation="-75 0 0">
+        <a-entity
+          id="model-kastil"
+          gltf-model="projek ar kastil  fantasi2.glb"
+          scale="0.03 0.03 0.03"
+          position="0 0 0"
+          animation-mixer="clip: *; loop: repeat">
+        </a-entity>
       </a-entity>
     </a-marker>
 
